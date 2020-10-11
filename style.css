@@ -1,0 +1,18 @@
+header{
+	background-color: gray;
+	color: white;
+	display: flex;
+}
+footer{
+	background-color: black;
+	color: white;
+}
+
+.menu{
+	display: flex;
+	margin: 15px;
+}
+.icon{
+	display: flex;
+	font-size: 20px;
+}
