@@ -1,0 +1,57 @@
+html ,body{
+	margin: 0px;
+	height: 100%;
+}
+.back{
+	background-image: url("https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/133184127/original/9daeda353c1a7430a225dec7447b80745b7cb3f3/do-pixel-art-environment-background.jpg");
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.header{
+	margin: 0px;
+	padding: 0px;
+}
+.footer{
+	background-color: black;
+	color: white;
+	flex-shrink: 0;
+}
+.main{
+	flex: 1 0 auto;
+}
+.nav{
+	background-color: gray;
+	display: flex;
+	justify-content: space-between;
+}
+.menu{
+	width: 50%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0px 15px 0px 15px;
+
+}
+.icon{
+	font-size: 20px;
+}
+#bar{
+	text-decoration: none;
+	color: white;
+}
+.join_us{
+	display: flex;
+}
+.download_icon{
+	margin: 0px;
+}
+.download_icon img{
+	width: 45px;
+	height: 40px;
+	margin: 0px 15px 0px 15px;
+}
+.wall img{
+	width: 100%;
+	height: 100%;
+}
