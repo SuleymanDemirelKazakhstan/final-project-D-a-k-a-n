@@ -1,9 +1,12 @@
+* {
+	box-sizing: border-box;
+}
 html ,body{
 	margin: 0px;
 	height: 100%;
+	background-image: url("https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/133184127/original/9daeda353c1a7430a225dec7447b80745b7cb3f3/do-pixel-art-environment-background.jpg");
 }
 .back{
-	background-image: url("https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/133184127/original/9daeda353c1a7430a225dec7447b80745b7cb3f3/do-pixel-art-environment-background.jpg");
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -13,9 +16,13 @@ html ,body{
 	padding: 0px;
 }
 .footer{
-	background-color: black;
+	background-color: rgb(23, 42, 74, 0.8);	
 	color: white;
 	flex-shrink: 0;
+
+	height: 50px;
+	text-align: center;
+	padding: 5px;
 }
 .main{
 	flex: 1 0 auto;
@@ -24,24 +31,51 @@ html ,body{
 	background-color: gray;
 	display: flex;
 	justify-content: space-between;
+	height: 100%;
+}
+.toggle-button{
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 30px;
+	height: 26px;
+}
+.toggle-button .line{
+	height: 3px;
+	width: 100%;
+	background-color: black;
+	border-radius: 10px;
 }
 .menu{
 	width: 50%;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	margin: 0px 15px 0px 15px;
 
 }
 .icon{
+	padding: 10px;
 	font-size: 20px;
+	height: 100%;
+	width: 100%;
+	text-align: center;
 }
 #bar{
 	text-decoration: none;
 	color: white;
 }
+.icon:hover{
+	background-color: black;
+}
 .join_us{
 	display: flex;
+	height: 100%;
+}
+.join_us:hover{
+	background-color: white;
 }
 .download_icon{
 	margin: 0px;
@@ -54,4 +88,30 @@ html ,body{
 .wall img{
 	width: 100%;
 	height: 100%;
+}
+.footer_info{
+	
+}
+
+@media screen and (max-width: 700px ){
+	.menu{
+		flex-direction: column;
+		width: 100%;
+		margin: 0px;
+		display: none;
+	}
+	.nav{
+		flex-direction: column;
+	}
+	.join_us{
+		
+	}
+
+	.toggle-button{
+		display: flex;
+	}
+
+	.active{
+		display: flex;
+	}
 }
