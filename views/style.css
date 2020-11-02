@@ -8,15 +8,19 @@ html ,body{
 }
 .back{
 	height: 100%;
+	width: 90%;
 	display: flex;
 	flex-direction: column;
+	margin: auto;
+	padding-top: 20px;
 }
 .header{
 	margin: 0px;
 	padding: 0px;
 }
 .footer{
-	background-color: rgb(23, 42, 74, 0.8);	
+	background-color: rgb(46, 31, 75, 0.8);
+	border: 1px solid white;
 	color: white;
 	flex-shrink: 0;
 
@@ -26,12 +30,77 @@ html ,body{
 }
 .main{
 	flex: 1 0 auto;
+	display: flex;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.left_part{
+	width: 40%;
+	margin-right: 5px;
+	display: flex;
+	flex-direction: column;
+}
+.description{
+	border: 1px solid white;
+	background-color: rgb(125, 60, 152, 0.8);
+	margin-bottom: 10px;
+	color: white;
+	text-align: center;
+}
+.download_launcher{
+	height: 50px;
+	display: flex;
+	border: 1px solid white;
+}
+.download_launcher a{
+	background-color: rgb(46, 31, 75);
+	padding-top: 5px;
+	font-size: 30px;
+	text-decoration: none;
+	color: white;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+.download_launcher a:hover{
+	background-color: black;
+}
+.status_text{
+	padding-top: 5px; 
+	color: white;
+	border-bottom: 1px solid white;
+	font-size: 30px;
+}
+.right_part{
+	width: 60%;
+	border: 1px solid red;
+	margin-right: 5px;
+}
+.wall{
+	background-color: rgb(46, 31, 75);	
+	border: 0px solid white;
+	width: 100%;
+	height: 150px;
+	margin-bottom: 10px;
+}
+.welcome_text{
+	font-size: 70px;
+	font-style: serif;
+	color: white;
+	text-align: center;
+	height: 100%;
+}
+.welcome_text div{
+	padding: 35px;
+	border: 1px solid white;
 }
 .nav{
-	background-color: rgb(109, 93, 148);
+	background-color: rgb(46, 31, 75);
+	border: 1px solid white;
 	display: flex;
 	justify-content: space-between;
-	height: 100%;
+	height: 70;
+	position: relative;
 }
 .toggle-button{
 	position: absolute;
@@ -56,24 +125,23 @@ html ,body{
 	justify-content: space-around;	
 
 }
-.icon{
-	font-size: 20px;
-	height: 100%;
-	width: 100%;
-	text-align: center;
-	margin: auto;
-}
-.icon:hover{
+#bar:hover{
 	background-color: black;
 }
 #bar{
+	height: 100%;
+	width: 100%;
+	text-align: center;
+
 	text-decoration: none;
 	color: white;
+	padding: 10px;
 }
 .block_link{
 	width: 100%;
 	height: 100%;
 	margin: auto;
+	font-size: 20px;
 }
 .download_icon{
 	margin: 0px;
@@ -89,10 +157,6 @@ html ,body{
 	font-size: 32px;
 	color:white;
 	width: 100%;
-}
-.wall img{
-	width: 100%;
-	height: 100%;
 }
 .footer_info{
 	
