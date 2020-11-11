@@ -1,0 +1,197 @@
+* {
+	box-sizing: border-box;
+}
+html, body{
+	margin: 0px;
+	height: 100%;
+}
+.back_img{
+	height: 100%;
+	background-image: url("https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/133184127/original/9daeda353c1a7430a225dec7447b80745b7cb3f3/do-pixel-art-environment-background.jpg");
+}
+.back{
+	height: 100%;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	padding-top: 20px;
+}
+.header{
+	margin: 0px;
+	padding: 0px;
+}
+.footer{
+	background-color: rgb(46, 31, 75, 0.8);
+	border: 1px solid white;
+	color: white;
+	flex-shrink: 0;
+
+	height: 50px;
+	text-align: center;
+	padding: 5px;
+}
+.main{
+	flex: 1 0 auto;
+	display: flex;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.left_part{
+	width: 40%;
+	margin-right: 5px;
+	display: flex;
+	flex-direction: column;
+}
+.description{
+	border: 1px solid white;
+	background-color: rgb(125, 60, 152, 0.8);
+	margin-bottom: 10px;
+	color: white;
+	text-align: center;
+}
+.download_launcher{
+	display: flex;
+	border: 1px solid white;
+}
+.download_launcher a{
+	background-color: rgb(46, 31, 75);
+	padding: 5px;
+	font-size: 30px;
+	text-decoration: none;
+	color: white;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+.download_launcher a:hover{
+	background-color: black;
+}
+.status_text{
+	padding-top: 5px; 
+	color: white;
+	border-bottom: 1px solid white;
+	font-size: 30px;
+}
+.right_part{
+	width: 60%;
+	border: 1px solid red;
+	margin-right: 5px;
+}
+.wall{
+	background-color: rgb(46, 31, 75);	
+	border: 0px solid white;
+	width: 100%;
+	height: 150px;
+	margin-bottom: 10px;
+}
+.welcome_text{
+	font-size: 70px;
+	font-style: serif;
+	color: white;
+	text-align: center;
+	height: 100%;
+}
+.welcome_text div{
+	padding: 35px;
+	border: 1px solid white;
+}
+.nav{
+	background-color: rgb(46, 31, 75);
+	border: 1px solid white;
+	display: flex;
+	justify-content: space-between;
+	height: 70;
+	position: relative;
+}
+.toggle-button{
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 30px;
+	height: 26px;
+}
+.toggle-button .line{
+	height: 3px;
+	width: 100%;
+	background-color: black;
+	border-radius: 10px;
+}
+.menu{
+	width: 50%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;	
+
+}
+#bar:hover{
+	background-color: black;
+}
+#bar{
+	height: 100%;
+	width: 100%;
+	text-align: center;
+
+	text-decoration: none;
+	color: white;
+	padding: 10px;
+}
+.block_link{
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	font-size: 20px;
+}
+.download_icon{
+	margin: 0px;
+	display: flex;
+	height: 100%;
+	width: 50px;
+}
+.download_icon:hover{
+	background-color: black;
+}
+.download_icon a{
+	text-align: center;
+	font-size: 32px;
+	color:white;
+	width: 100%;
+}
+.footer_info{
+	
+}
+
+@media screen and (max-width: 700px ){
+	.menu{
+		flex-direction: column;
+		width: 100%;
+		margin: 0px;
+		display: none;
+	}
+	.nav{
+		flex-direction: column;
+	}
+	.join_us{
+		
+	}
+
+	.toggle-button{
+		display: flex;
+	}
+
+	.active{
+		display: flex;
+	}
+	.main{
+		flex-direction: column;
+	}
+	.left_part{
+		width: 100%;
+	}
+	.right_part{
+		width: 100%;
+	}
+}
