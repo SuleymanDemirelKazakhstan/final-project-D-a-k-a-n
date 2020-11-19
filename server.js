@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true }));
 app.use(express.static('public'));
 
 const hbs = exphbs.create();
@@ -24,24 +25,50 @@ MongoClient.connect(url, function(err, db) {
 	app.get('/', (req, res)=>{
 		dbo.collection(collection_servers).find().toArray((err,result)=>{
 			if(err) throw err;
-			res.render('index', {cars:result});
+			res.render('index', {cars:result});//common
 		});
 	});
 
 	app.get('/admin', (req, res)=>{
-		dbo.collection(collection_servers).find().toArray((err,result)=>{
+		//dbo.collection(collection_servers).find().toArray((err,result)=>{
+			//if(err) throw err;
+			res.render('admin');//common
+		//});
+	});
+
+	app.get('/news_list', (req,res)=>{
+		dbo.collection(collection_news).find().toArray((err,result)=>{
 			if(err) throw err;
-			res.render('admin', {cars:result});
+			res.render('news_list', {'news': result});//common
 		});
 	});
 
-	app.post('/cars', (req, res)=>{
-		let query = { brand: req.body.brand };
-		dbo.collection("cars").find(query).toArray((err,result)=>{
+	app.post('/news_list', (req,res)=>{
+		//news info
+		let head = req.body.header;
+		let main_text = req.body.main;
+		let image = req.body.img;
+		//data info
+		let date = new Date();
+		let day = date.getDate();
+		let month = date.getMonth()+1;//+1 becouse 0='January'
+		let year = date.getFullYear();
+
+		console.log(head + "  " + main_text + "  " + day + "  " + month + "  " + year);
+		let query = {'header': head, 'main': main_text, 'image': image, 'day': day, 'month': month, 'year': year};
+		dbo.collection(collection_news).insertOne(query,(err,result)=>{
 			if(err) throw err;
-			res.send(result);
 		});
+		res.send(`<a href='/news_list'>View news</a><br><a href='/admin'>Back</a>`);
 	});
+
+	// app.post('/cars', (req, res)=>{
+	// 	let query = { brand: req.body.brand };
+	// 	dbo.collection("cars").find(query).toArray((err,result)=>{
+	// 		if(err) throw err;
+	// 		res.send(result);
+	// 	});
+	// });
 
 	app.get('/del', (req, res)=>{
 		dbo.collection("cars").drop(function(err, delOK) {
