@@ -1,8 +1,7 @@
 let main = document.querySelector(".main");
 
 let news_link = document.querySelector("#bar1");
-let server_link = document.querySelector("#bar2");
-let item_link = document.querySelector("#bar3");
+let item_link = document.querySelector("#bar2");
 
 news_link.addEventListener('click', add_news);
 

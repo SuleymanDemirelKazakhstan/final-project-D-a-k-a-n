@@ -2,12 +2,16 @@
 <link rel="stylesheet" type="text/css" href="style_news_list.css">
 {{#each news}}
 <div class='box'>
-	<img src={{this.image}} width="200px" height="200px">
-	<div class='info'>
-		<h1>{{this.header}}</h1>
-		<p>{{this.main}}</p>
-		<p>{{this.day}}.{{this.month}}.{{this.year}}</p>
+	<div class="left_part">
+		<img src={{this.image}} width="200px" height="200px">
+		<div class='info'>
+			<h1>{{this.header}}</h1>
+			<p>{{this.main}}</p>
+			<p>{{this.day}}.{{this.month}}.{{this.year}}</p>
+		</div>
 	</div>
-	<a href="/news_list?header={{this.header}}"><button>Delete</button></a>
+	<div class="right_part">
+		<a href="/news_list?Delete={{this.id}}" method='POST'><button>Delete</button></a>
+	</div>
 </div>
 {{/each}}

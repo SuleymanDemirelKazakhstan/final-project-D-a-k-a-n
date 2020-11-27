@@ -13,19 +13,23 @@ const hbs = exphbs.create();
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-var collection_servers = "servers";
+//collections name
 var collection_comments = "comments";
 var collection_news = "news";
 var collection_items = "items";
 
+//id count news
+var countNews = 4;
+
+//
 MongoClient.connect(url, function(err, db) {
   	if (err) throw err;
   	var dbo = db.db("web_project");
 
 	app.get('/', (req, res)=>{
-		dbo.collection(collection_servers).find().toArray((err,result)=>{
+		dbo.collection(collection_news).find().toArray((err,result)=>{
 			if(err) throw err;
-			res.render('index', {cars:result});//common
+			res.render('index', {news:result});//common
 		});
 	});
 
@@ -55,7 +59,7 @@ MongoClient.connect(url, function(err, db) {
 		let year = date.getFullYear();
 
 		console.log(head + "  " + main_text + "  " + day + "  " + month + "  " + year);
-		let query = {'header': head, 'main': main_text, 'image': image, 'day': day, 'month': month, 'year': year};
+		let query = {'id': countNews++, 'header': head, 'main': main_text, 'image': image, 'day': day, 'month': month, 'year': year};
 		dbo.collection(collection_news).insertOne(query,(err,result)=>{
 			if(err) throw err;
 		});
@@ -70,11 +74,13 @@ MongoClient.connect(url, function(err, db) {
 	// 	});
 	// });
 
-	app.get('/del', (req, res)=>{
-		dbo.collection("cars").drop(function(err, delOK) {
-	    	if (err) throw err;
-	    	if (delOK) console.log("Collection deleted");
-	  	});
+	app.get('/news_list?Delete', (req, res)=>{
+		console.log("DONE!");
+		// let query = req;
+		// dbo.collection(collection_news).deleteOne(query, function(err, delOK) {
+	 //    	if (err) throw err;
+	 //    	if (delOK) console.log("1document deleted");
+	 //  	});
 	  	res.send("Elements was deleted");
 	});
 

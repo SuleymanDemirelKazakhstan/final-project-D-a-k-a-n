@@ -1,13 +1,16 @@
 * {
 	box-sizing: border-box;
 }
+
+h1, h2, h3, h4, p{
+	margin: 0px;
+}
+
 html, body{
 	margin: 0px;
 	height: 100%;
-}
-.back_img{
-	height: 100%;
-	background-image: url("https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/133184127/original/9daeda353c1a7430a225dec7447b80745b7cb3f3/do-pixel-art-environment-background.jpg");
+	background: url("pictures/main_back_img.jpg");
+	background-size: cover;
 }
 .back{
 	height: 100%;
@@ -72,11 +75,6 @@ html, body{
 	color: white;
 	border-bottom: 1px solid white;
 	font-size: 30px;
-}
-.right_part{
-	width: 60%;
-	border: 1px solid red;
-	margin-right: 5px;
 }
 .wall{
 	background-color: rgb(46, 31, 75);	
@@ -164,6 +162,47 @@ html, body{
 	
 }
 
+.server1{
+	background-color: rgb(125, 60, 152);
+}
+.server1 h1{
+	color: rgb(255, 0, 104);
+	text-decoration: underline;
+}
+.server1 p{
+	color: white;
+	text-decoration: none;
+}
+.right_part{
+	width: 60%;
+	margin-right: 5px;
+}
+.title_news{
+	color: white;
+	text-align: center;
+	width: 100%;
+}
+.all_news{
+	display: flex;
+	flex-wrap: wrap;
+}
+.news{
+	position: relative;
+	margin: 3px;
+	width: 48%;
+	height: 150px;
+	border: 1px solid white;
+}
+.news img{
+	width: 100%;
+	height: 100%;
+}
+.news_text{
+	position: absolute;
+	bottom: 5px;
+	color: white;
+}
+
 @media screen and (max-width: 700px ){
 	.menu{
 		flex-direction: column;
@@ -192,6 +231,15 @@ html, body{
 		width: 100%;
 	}
 	.right_part{
+		width: 100%;
+	}
+	.server1 h1{
+		font-size: 25px;
+	}
+	.server1 p{
+		font-size: 15px;
+	}
+	.news img{
 		width: 100%;
 	}
 }
