@@ -43,21 +43,19 @@
 	</div>
 	<div class="right_part">
 		<h1 class="title_news">Last News</h1>
-
 		<div class="all_news">
+		{{#each news}}
 			<div class="news">
 				<a href="#">
-					<img src="pictures/news_img6.png">
+					<img src={{this.image}}>
 					<div class="news_text">
-						<h2>We start</h2>
-						<div class="date">25.11.2020</div>
+						<h2>{{this.header}}</h2>
+						<div class="date">{{this.day}}.{{this.month}}.{{this.year}}</div>
 					</div>
 				</a>
 			</div>
-		</div>
-		{{#each news}}
-
 		{{/each}}
+		</div>
 	</div>
 </div>
 <div class="footer">

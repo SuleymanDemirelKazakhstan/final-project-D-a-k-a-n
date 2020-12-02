@@ -1,5 +1,6 @@
 <title>News List</title>
 <link rel="stylesheet" type="text/css" href="style_news_list.css">
+<script src="script_news_list.js" defer></script>
 {{#each news}}
 <div class='box'>
 	<div class="left_part">
@@ -11,7 +12,10 @@
 		</div>
 	</div>
 	<div class="right_part">
-		<a href="/news_list/Delete-{{this.id}}" method='POST'><button>Delete</button></a>
+		<a id="{{this.id}}" method='POST' class="update"><div class="bt-upd">Update</div></a>
+		<a href="/news_list/Delete-{{this.id}}" method='POST'><div class="bt-del">Delete</div></a>
 	</div>
 </div>
 {{/each}}
+<div class="back">
+</div>

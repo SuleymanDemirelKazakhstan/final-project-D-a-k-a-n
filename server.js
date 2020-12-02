@@ -60,9 +60,11 @@ MongoClient.connect(url, function(err, db) {
 		let year = date.getFullYear();
 
 		console.log(countNews + " " + head + "  " + main_text + "  " + day + "  " + month + "  " + year);
-		let query = {'id': countNews++, 'header': head, 'main': main_text, 'image': image, 'day': day, 'month': month, 'year': year};
+		let query = {'id': countNews, 'header': head, 'main': main_text, 'image': image, 'day': day, 'month': month, 'year': year};
 		dbo.collection(collection_news).insertOne(query,(err,result)=>{
 			if(err) throw err;
+
+			countNews++;
 		});
 		res.send(`<a href='/news_list'>View news</a><br><a href='/admin'>Back</a>`);
 	});
@@ -98,6 +100,40 @@ MongoClient.connect(url, function(err, db) {
 		res.send("Elements was added");
 	});
 
+	app.post('/news_list/update:id', (req,res)=>{
+		let id = parseInt(req.params.id);
+		let head = req.body.header;
+		let main_text = req.body.main;
+		let image = 'pictures/' + req.body.img;
+
+		let old_query = { 'id': id };
+		dbo.collection(collection_news).findOne(old_query, (err,result)=>{
+			if(err) throw err;
+
+			if(head == ''){
+				head = result.header;
+			}
+			if(main_text == ''){
+				main_text = result.main;
+			}
+			if(image == 'pictures/'){
+				image = result.image;
+			}
+			
+			let new_query = { $set:{ 'header': head, 'main': main_text, 'image': image }};
+
+			dbo.collection(collection_news).updateOne(old_query, new_query, function(err, resa) {
+				if (err) throw err;
+				console.log("1 document updated");
+
+				res.send("1 document updated");
+			});
+		});
+		
+
+
+		
+	});
 
 	app.listen(3000, function(){
 		console.log("Server has started");

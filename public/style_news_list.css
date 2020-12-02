@@ -1,14 +1,92 @@
+.back{
+	display: none;
+}
+
+.popup{
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+}
+.content{
+	margin:40px auto 0px auto;
+    display: flex;
+    justify-content: center;
+    /*height: 40px;*/
+    /*padding:10px;*/
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
+}
+
 .box{
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
+	margin-bottom: 5px;
+	border: 1px solid blue;
 }
 .info{
-	
+
 }
 .left_part{
 	display: flex;
+	width: 90%;
 }
 .right_part{
+	width: 10%;
+	display: flex;
+	flex-direction: column;
+}
+.right_part a{
+	width: 100%;
+	height: 100%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-decoration: none;
+}
+.right_part .update{
+	width: 100%;
+	height: 100%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-decoration: none;
+}
+.bt-del, .bt-upd{
+	width: 100%;
+	height: 100%;
+
+	background-color: black;
+	color: white;
 	
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.bt-upd:hover{
+	background-color: blue;
+}
+.bt-del:hover{
+	background-color: red;
+}
+
+@media screen and (max-width: 750px){
+	.box{
+		flex-direction: column;
+	}
+	.left_part{
+		width: 100%;
+		flex-direction: column;
+	}
+	.left_part img{
+		width: 100%;
+	}
+
+	.right_part{
+		width: 100%;
+		height: 100px;
+	}
 }
