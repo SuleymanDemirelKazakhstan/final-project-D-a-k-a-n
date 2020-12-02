@@ -19,7 +19,7 @@ var collection_news = "news";
 var collection_items = "items";
 
 //id count news
-var countNews = 4;
+var countNews = 1;
 
 //
 MongoClient.connect(url, function(err, db) {
@@ -51,14 +51,15 @@ MongoClient.connect(url, function(err, db) {
 		//news info
 		let head = req.body.header;
 		let main_text = req.body.main;
-		let image = req.body.img;
+		let image = 'pictures/' + req.body.img;
+		console.log(image);
 		//data info
 		let date = new Date();
 		let day = date.getDate();
 		let month = date.getMonth()+1;//+1 becouse 0='January'
 		let year = date.getFullYear();
 
-		console.log(head + "  " + main_text + "  " + day + "  " + month + "  " + year);
+		console.log(countNews + " " + head + "  " + main_text + "  " + day + "  " + month + "  " + year);
 		let query = {'id': countNews++, 'header': head, 'main': main_text, 'image': image, 'day': day, 'month': month, 'year': year};
 		dbo.collection(collection_news).insertOne(query,(err,result)=>{
 			if(err) throw err;
@@ -74,13 +75,15 @@ MongoClient.connect(url, function(err, db) {
 	// 	});
 	// });
 
-	app.get('/news_list?Delete', (req, res)=>{
-		console.log("DONE!");
-		// let query = req;
-		// dbo.collection(collection_news).deleteOne(query, function(err, delOK) {
-	 //    	if (err) throw err;
-	 //    	if (delOK) console.log("1document deleted");
-	 //  	});
+	app.get('/news_list/:type-:id', (req, res)=>{
+		let id = req.params.id;
+		let type = req.params.type;
+		console.log("DONE! " + type + " " + id);
+		let query = {'id': parseInt(id)};
+		dbo.collection(collection_news).deleteOne(query, function(err, delOK) {
+	    	if (err) throw err;
+	    	if (delOK) console.log("1document deleted " + id);
+	  	});
 	  	res.send("Elements was deleted");
 	});
 

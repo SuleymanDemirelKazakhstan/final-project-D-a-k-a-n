@@ -24,7 +24,7 @@ function add_news(event){
 							<label for="main">Main_text:</label><br>
 							<textarea id="main" name="main" rows="4" cols="50"></textarea><br><br>
 							<label for="file_img">Image_url:</label>
-							<input type="text" id="file_img" name="img"><br><br>
+							<input type="file" id="file_img" name="img"><br><br>
  							<input type="submit" value="Submit">
 						</form>`;
 		form_action.innerHTML = template;
