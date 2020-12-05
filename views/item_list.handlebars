@@ -1,0 +1,21 @@
+<title>Item List</title>
+<link rel="stylesheet" type="text/css" href="style_news_list.css">
+<script src="script_item_list.js" defer></script>
+{{#each item}}
+<div class='box'>
+	<div class="left_part">
+		<img src={{this.img}} width="200px" height="200px">
+		<div class='info'>
+			<h1>{{this.name}}</h1>
+			<p>{{this.description}}</p>
+			<p><strong>Price:</strong> {{this.price}}<strong>$</strong></p>
+		</div>
+	</div>
+	<div class="right_part">
+		<a id="{{this.id}}" method='POST' class="update"><div class="bt-upd">Update</div></a>
+		<a href="/item_list/Delete-{{this.id}}" method='POST'><div class="bt-del">Delete</div></a>
+	</div>
+</div>
+{{/each}}
+<div class="back">
+</div>

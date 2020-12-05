@@ -19,7 +19,7 @@
 	<div class = "menu">
 		<a id = "bar" href="/"><div class="block_link">Home</div></a>
 		<a id = "bar" href="/"><div class="block_link">Rules</div></a>
-		<a id = "bar" href="/"><div class="block_link">Market</div></a>
+		<a id = "bar" href="/market"><div class="block_link">Market</div></a>
 		<a id = "bar" href="/"><div class="block_link">Help</div></a>
 	</div>
 </div>
@@ -46,7 +46,7 @@
 		<div class="all_news">
 		{{#each news}}
 			<div class="news">
-				<a href="#">
+				<a href=/news-{{this.id}}>
 					<img src={{this.image}}>
 					<div class="news_text">
 						<h2>{{this.header}}</h2>
