@@ -1,0 +1,37 @@
+<title>Gallery</title>
+<link rel="stylesheet" type="text/css" href="/market_element.css">
+<script src="/gallery.js" defer></script>
+
+<div class="back">
+
+<div class="header">
+<div class = "nav">
+	<div class="logo_market">Item</div>
+	<a href="#" class="toggle-button">
+		<span class="line"></span>
+		<span class="line"></span>
+		<span class="line"></span>
+	</a>
+	<div class = "menu">
+		<a id = "bar" href="/" class="act"><div class="block_link">Home</div></a>
+	</div>
+</div>
+</div>
+
+<div class="main">
+	<div class="right_part">
+		<h1 class="name">{{item.name}}</h1><br>
+		<h3>Description:</h3>
+		<h1>{{item.description}}</h1>
+	</div>
+	<div class="left_part">
+		<img src="{{item.img}}" class="picture">
+		<h1 class="price">Price: {{item.price}}$</h1>
+	</div>
+</div>
+
+<div class="footer">
+	<div class="footer_info">Contacts</div>
+</div>
+
+</div>

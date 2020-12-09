@@ -36,17 +36,34 @@ MongoClient.connect(url, function(err, db) {
 	});
 
 	app.get('/news-:id', (req,res)=>{
-		let id = req.params.id;
+		let id = parseInt(req.params.id);
 		let query = { 'id': id };
 		dbo.collection(collection_news).findOne(query, (err,result)=>{
 			if(err) throw err;
 
-			res.send('Hi');
+			res.render('news_elements', { 'new': result });
 		});
 	});
 
 	app.get('/market', (req,res)=>{
 		res.render('market');
+	});
+
+	app.get('/market/all_items', (req,res)=>{
+		dbo.collection(collection_items).find().toArray((err,result)=>{
+			if(err) throw err;
+			res.render('market_gallery');
+		});
+	});
+
+	app.get('/market/item-:id', (req, res)=>{
+		let id = parseInt(req.params.id);
+		let query = { 'id': id };
+		dbo.collection(collection_items).findOne(query, (err, result)=>{
+			if(err) throw err;
+
+			res.render('market_element', { 'item': result });
+		});
 	});
 
 	app.post('/market/load-items', (req,res)=>{
@@ -87,7 +104,7 @@ MongoClient.connect(url, function(err, db) {
 		//news info
 		let head = req.body.header;
 		let main_text = req.body.main;
-		let image = 'pictures/news/' + req.body.img;
+		let image = '/pictures/news/' + req.body.img;
 		console.log(image);
 		//data info
 		let date = new Date();
@@ -125,7 +142,7 @@ MongoClient.connect(url, function(err, db) {
 		let id = parseInt(req.params.id);
 		let head = req.body.header;
 		let main_text = req.body.main;
-		let image = 'pictures/news/' + req.body.img;
+		let image = '/pictures/news/' + req.body.img;
 
 		let old_query = { 'id': id };
 		dbo.collection(collection_news).findOne(old_query, (err,result)=>{
@@ -137,7 +154,7 @@ MongoClient.connect(url, function(err, db) {
 			if(main_text == ''){
 				main_text = result.main;
 			}
-			if(image == 'pictures/news/'){
+			if(image == '/pictures/news/'){
 				image = result.image;
 			}
 			
@@ -164,7 +181,7 @@ MongoClient.connect(url, function(err, db) {
 		let item_name = req.body.name;
 		let description = req.body.description;
 		let price = parseInt(req.body.price);
-		let image = 'pictures/item/' + req.body.img;
+		let image = '/pictures/item/' + req.body.img;
 
 		dbo.collection(collection_items).find().toArray((err, result)=>{
 
@@ -195,7 +212,7 @@ MongoClient.connect(url, function(err, db) {
 		let name = req.body.name;
 		let description = req.body.description;
 		let price = req.body.price;
-		let image = 'pictures/item/' + req.body.img;
+		let image = '/pictures/item/' + req.body.img;
 
 		let old_query = { 'id': id };
 		dbo.collection(collection_items).findOne(old_query, (err,result)=>{
@@ -210,7 +227,7 @@ MongoClient.connect(url, function(err, db) {
 			if(price == ''){
 				price = result.price;
 			}
-			if(image == 'pictures/item/'){
+			if(image == '/pictures/item/'){
 				image = result.img;
 			}
 			

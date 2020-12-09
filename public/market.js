@@ -125,6 +125,11 @@ function load_items(arr){
 		function stopLink(event){
 			event.preventDefault();
 			console.log(i['id']);
+
+			if(star.style.background == "orange")
+				star.style.background = "white";
+			else
+				star.style.background = "orange"
 		}
 	}
 }
