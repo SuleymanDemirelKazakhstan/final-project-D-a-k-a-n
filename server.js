@@ -13,6 +13,12 @@ const hbs = exphbs.create();
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+//sessions and cookie
+const cookieParser = require('cookie-parser');
+let session = require('express-session');
+app.use(cookieParser());
+app.use(session({secret: "Shh, its a secret!"}));
+
 //collections name
 var collection_comments = "comments";
 var collection_news = "news";
@@ -71,6 +77,7 @@ MongoClient.connect(url, function(err, db) {
 			if (err) throw err;
 			res.send(result);
 		});
+		// res.cookie("CookieStar", '123');
 	});
 
 	app.post('/market/find-item', (req,res)=>{
@@ -84,6 +91,42 @@ MongoClient.connect(url, function(err, db) {
 			if (err) throw err;
 			res.send(result);
 		});
+	});
+
+	app.post('/market/setStar', (req,res)=>{
+		let starItem = req.body.id;
+		let cookie = req.cookies.CookieStar;
+		if(cookie == undefined){
+			cookie = starItem;
+		}
+		else{
+			let setCookie = new Set(cookie);
+
+			if(!setCookie.has(starItem.toString())){
+				cookie += starItem;
+			}
+			// setCookie.add(starItem);
+		}
+		res.cookie("CookieStar", cookie);
+		
+		res.send({});
+	});
+	app.post('/market/removeStar', (req,res)=>{
+		let starItem = req.body.id;
+		let cookie = req.cookies.CookieStar;
+		let setCookie = new Set(cookie);
+		cookie = "";
+
+		setCookie.delete(starItem.toString());
+		setCookie.forEach(writeCookie);
+
+		function writeCookie(values){
+			cookie += values;
+		}
+
+		res.cookie("CookieStar", cookie);
+		console.log(cookie+"hi");
+		res.send({});
 	});
 
 	app.get('/admin', (req, res)=>{
